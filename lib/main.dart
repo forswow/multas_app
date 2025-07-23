@@ -1,38 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'widgets/navigation_bar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:multas_app/core/app/router/router.dart';
 
 final _themedata = GetStorage();
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  ConsumerState<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends ConsumerState<MyApp> {
   final bool _darkMode = _themedata.read('darkmode') ?? false;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Multas',
-      theme: _darkMode
-          ? ThemeData.dark(
-              useMaterial3: false,
-            )
-          : ThemeData.light(
-              useMaterial3: false,
-            ),
-      home: const Splash(),
-      debugShowCheckedModeBanner: false,
+    final router = ref.watch(routerProvider);
+    return MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+      child: MaterialApp.router(
+        title: 'Multas',
+        routerConfig: router,
+        theme: _darkMode
+            ? ThemeData.dark(
+                useMaterial3: false,
+              )
+            : ThemeData.light(
+                useMaterial3: false,
+              ),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
@@ -49,14 +56,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Future.delayed(
-      const Duration(seconds: 1),
-      () {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const BottomNavigationBarExample()));
-      },
-    );
+        const Duration(seconds: 1), () => context.pushReplacement('/'));
   }
 
   @override

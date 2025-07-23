@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:multas_app/models/doc_model.dart';
+import 'package:multas_app/common/models/doc_model.dart';
 import 'package:multas_app/pages/links_page.dart';
 
 class DocHomeWidget extends StatelessWidget {

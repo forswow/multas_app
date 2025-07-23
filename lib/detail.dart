@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:multas_app/styles/textstyle.dart';
+import 'package:multas_app/core/styles/textstyle.dart';
 
 // ignore: must_be_immutable
 class Detail extends StatefulWidget {

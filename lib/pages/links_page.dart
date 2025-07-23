@@ -5,7 +5,7 @@ class SpacedItemsList extends StatefulWidget {
   const SpacedItemsList({super.key});
 
   @override
-  _MySpacedItemsList createState() => _MySpacedItemsList();
+  State<SpacedItemsList> createState() => _MySpacedItemsList();
 }
 
 class _MySpacedItemsList extends State<SpacedItemsList> {

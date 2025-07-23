@@ -1,5 +1,5 @@
 import 'package:path/path.dart';
-import 'package:multas_app/models/doc_model.dart';
+import 'package:multas_app/common/models/doc_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {

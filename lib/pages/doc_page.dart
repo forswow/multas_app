@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:multas_app/models/doc_model.dart';
-import 'package:multas_app/services/database_helper.dart';
+import 'package:multas_app/common/models/doc_model.dart';
+import 'package:multas_app/core/services/database_helper.dart';
 
 class DocumentsPage extends StatefulWidget {
   const DocumentsPage({super.key});
 
   @override
-  _DocumentsPageState createState() => _DocumentsPageState();
+  State<DocumentsPage> createState() => _DocumentsPageState();
 }
 
 class _DocumentsPageState extends State<DocumentsPage> {
