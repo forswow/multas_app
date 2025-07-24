@@ -12,14 +12,17 @@ class DatabaseHelper {
       );
 
   Future<void> insertTask(
-      String title, String description, bool isChecked) async {
+    String title,
+    String description,
+    bool isChecked,
+  ) async {
     final Database db = await database;
     await db.insert(
       'tasks',
       {
         'title': title,
         'description': description,
-        'isChecked': isChecked ? 1 : 0
+        'isChecked': isChecked ? 1 : 0,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );

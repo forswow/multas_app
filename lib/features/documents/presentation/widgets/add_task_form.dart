@@ -82,8 +82,8 @@ class _AddTaskFormState extends ConsumerState<AddTaskForm>
           boxShadow: [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withOpacity(0.3)
-                  : Colors.grey.withOpacity(0.1),
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.grey.withValues(alpha: 0.1),
               blurRadius: 10,
               offset: const Offset(0, 2),
             ),
@@ -102,7 +102,7 @@ class _AddTaskFormState extends ConsumerState<AddTaskForm>
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.green.withOpacity(0.1),
+                        color: Colors.green.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Icon(
@@ -168,7 +168,7 @@ class _AddTaskFormState extends ConsumerState<AddTaskForm>
                     ),
                     filled: true,
                     fillColor: isDark
-                        ? Colors.grey[800]!.withOpacity(0.5)
+                        ? Colors.grey[800]!.withValues(alpha: 0.5)
                         : Colors.grey[50],
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -214,7 +214,7 @@ class _AddTaskFormState extends ConsumerState<AddTaskForm>
                 DecoratedBox(
                   decoration: BoxDecoration(
                     color: isDark
-                        ? Colors.grey[800]!.withOpacity(0.5)
+                        ? Colors.grey[800]!.withValues(alpha: 0.5)
                         : Colors.grey[50],
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
@@ -288,14 +288,14 @@ class _AddTaskFormState extends ConsumerState<AddTaskForm>
                 DecoratedBox(
                   decoration: BoxDecoration(
                     color: _isChecked
-                        ? Colors.green.withOpacity(0.1)
+                        ? Colors.green.withValues(alpha: 0.1)
                         : (isDark
-                            ? Colors.grey[800]!.withOpacity(0.3)
+                            ? Colors.grey[800]!.withValues(alpha: 0.3)
                             : Colors.grey[100]),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: _isChecked
-                          ? Colors.green.withOpacity(0.3)
+                          ? Colors.green.withValues(alpha: 0.3)
                           : (isDark ? Colors.grey[700]! : Colors.grey[300]!),
                     ),
                   ),

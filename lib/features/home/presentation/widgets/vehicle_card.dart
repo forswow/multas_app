@@ -27,17 +27,21 @@ class _VehicleCardState extends ConsumerState<VehicleCard>
     _scaleAnimation = Tween<double>(
       begin: 1.0,
       end: 0.98,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    ));
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
     _rotationAnimation = Tween<double>(
       begin: 0.0,
       end: 0.02,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    ));
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
   }
 
   @override
@@ -76,15 +80,15 @@ class _VehicleCardState extends ConsumerState<VehicleCard>
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: widget.task.isChecked
-                    ? Colors.green.withOpacity(0.3)
-                    : Colors.orange.withOpacity(0.3),
+                    ? Colors.green.withValues(alpha: 0.3)
+                    : Colors.orange.withValues(alpha: 0.3),
                 width: 2,
               ),
               boxShadow: [
                 BoxShadow(
                   color: isDark
-                      ? Colors.black.withOpacity(0.4)
-                      : Colors.grey.withOpacity(0.15),
+                      ? Colors.black.withValues(alpha: 0.4)
+                      : Colors.grey.withValues(alpha: 0.15),
                   blurRadius: 15,
                   offset: const Offset(0, 5),
                   spreadRadius: 1,
@@ -113,14 +117,13 @@ class _VehicleCardState extends ConsumerState<VehicleCard>
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                                 colors: [
-                                  Colors.blue.withOpacity(0.1),
-                                  Colors.blue.withOpacity(0.2),
+                                  Colors.blue.withValues(alpha: 0.1),
+                                  Colors.blue.withValues(alpha: 0.2),
                                 ],
                               ),
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                color: Colors.blue.withOpacity(0.2),
-                                width: 1,
+                                color: Colors.blue.withValues(alpha: 0.2),
                               ),
                             ),
                             child: const Icon(
@@ -188,11 +191,10 @@ class _VehicleCardState extends ConsumerState<VehicleCard>
                                     vertical: 4,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Colors.blue.withOpacity(0.1),
+                                    color: Colors.blue.withValues(alpha: 0.1),
                                     borderRadius: BorderRadius.circular(8),
                                     border: Border.all(
-                                      color: Colors.blue.withOpacity(0.2),
-                                      width: 1,
+                                      color: Colors.blue.withValues(alpha: 0.2),
                                     ),
                                   ),
                                   child: Text(
@@ -219,14 +221,14 @@ class _VehicleCardState extends ConsumerState<VehicleCard>
                                   ),
                                   decoration: BoxDecoration(
                                     color: widget.task.isChecked
-                                        ? Colors.green.withOpacity(0.1)
-                                        : Colors.orange.withOpacity(0.1),
+                                        ? Colors.green.withValues(alpha: 0.1)
+                                        : Colors.orange.withValues(alpha: 0.1),
                                     borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
                                       color: widget.task.isChecked
-                                          ? Colors.green.withOpacity(0.3)
-                                          : Colors.orange.withOpacity(0.3),
-                                      width: 1,
+                                          ? Colors.green.withValues(alpha: 0.3)
+                                          : Colors.orange
+                                              .withValues(alpha: 0.3),
                                     ),
                                   ),
                                   child: Row(
@@ -279,7 +281,7 @@ class _VehicleCardState extends ConsumerState<VehicleCard>
                       Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.1),
+                          color: Colors.blue.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Icon(

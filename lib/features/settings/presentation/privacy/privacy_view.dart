@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,17 +30,21 @@ class _PrivacyViewState extends State<PrivacyView>
     _fadeAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeOutCubic,
-    ));
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeOutCubic,
+      ),
+    );
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, 0.1),
       end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeOutCubic,
-    ));
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeOutCubic,
+      ),
+    );
     _loadText();
   }
 
@@ -57,14 +64,15 @@ class _PrivacyViewState extends State<PrivacyView>
       // Simulate loading delay for better UX
       await Future.delayed(const Duration(milliseconds: 500));
 
-      String contents = await rootBundle.loadString('assets/text/privacy.txt');
+      final String contents =
+          await rootBundle.loadString('assets/text/privacy.txt');
 
       if (mounted) {
         setState(() {
           _fileContents = contents;
           _isLoading = false;
         });
-        _animationController.forward();
+        unawaited(_animationController.forward());
       }
     } catch (e) {
       if (mounted) {
@@ -73,7 +81,7 @@ class _PrivacyViewState extends State<PrivacyView>
           _hasError = true;
         });
       }
-      print("Error loading file: $e");
+      log("Error loading file: $e");
     }
   }
 
@@ -102,7 +110,7 @@ class _PrivacyViewState extends State<PrivacyView>
           icon: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.1),
+              color: Colors.blue.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
             child: const Icon(
@@ -119,7 +127,7 @@ class _PrivacyViewState extends State<PrivacyView>
               icon: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.1),
+                  color: Colors.blue.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Icon(
@@ -175,14 +183,13 @@ class _PrivacyViewState extends State<PrivacyView>
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.blue.withOpacity(0.1),
-                      Colors.blue.withOpacity(0.05),
+                      Colors.blue.withValues(alpha: 0.1),
+                      Colors.blue.withValues(alpha: 0.05),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: Colors.blue.withOpacity(0.2),
-                    width: 1,
+                    color: Colors.blue.withValues(alpha: 0.2),
                   ),
                 ),
                 child: Row(
@@ -190,7 +197,7 @@ class _PrivacyViewState extends State<PrivacyView>
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Colors.blue.withOpacity(0.1),
+                        color: Colors.blue.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: const Icon(
@@ -240,15 +247,14 @@ class _PrivacyViewState extends State<PrivacyView>
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
                     color: isDark
-                        ? Colors.grey.withOpacity(0.2)
-                        : Colors.grey.withOpacity(0.1),
-                    width: 1,
+                        ? Colors.grey.withValues(alpha: 0.2)
+                        : Colors.grey.withValues(alpha: 0.1),
                   ),
                   boxShadow: [
                     BoxShadow(
                       color: isDark
-                          ? Colors.black.withOpacity(0.3)
-                          : Colors.grey.withOpacity(0.1),
+                          ? Colors.black.withValues(alpha: 0.3)
+                          : Colors.grey.withValues(alpha: 0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -276,14 +282,13 @@ class _PrivacyViewState extends State<PrivacyView>
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? const Color(0xFF1E1E1E).withOpacity(0.5)
-                      : Colors.grey.withOpacity(0.05),
+                      ? const Color(0xFF1E1E1E).withValues(alpha: 0.5)
+                      : Colors.grey.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
                     color: isDark
-                        ? Colors.grey.withOpacity(0.2)
-                        : Colors.grey.withOpacity(0.1),
-                    width: 1,
+                        ? Colors.grey.withValues(alpha: 0.2)
+                        : Colors.grey.withValues(alpha: 0.1),
                   ),
                 ),
                 child: Row(
@@ -291,7 +296,7 @@ class _PrivacyViewState extends State<PrivacyView>
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.green.withOpacity(0.1),
+                        color: Colors.green.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Icon(
@@ -341,97 +346,97 @@ class _PrivacyViewState extends State<PrivacyView>
   }
 
   Widget _buildLoadingState(bool isDark) => Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.1),
-              shape: BoxShape.circle,
-            ),
-            child: const CircularProgressIndicator(
-              color: Colors.blue,
-              strokeWidth: 3,
-            ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            'Cargando política de privacidad...',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: isDark ? Colors.grey[400] : Colors.grey[600],
-            ),
-          ),
-        ],
-      ),
-    );
-
-  Widget _buildErrorState(bool isDark) => Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.1),
+                color: Colors.blue.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
-              child: Icon(
-                Icons.error_outline,
-                size: 64,
-                color: Colors.red.withOpacity(0.8),
+              child: const CircularProgressIndicator(
+                color: Colors.blue,
+                strokeWidth: 3,
               ),
             ),
             const SizedBox(height: 24),
             Text(
-              'Error al cargar',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: isDark ? Colors.white : Colors.black87,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 12),
-            Text(
-              'No se pudo cargar la política de privacidad. Verifica que el archivo existe en assets/text/privacy.txt',
+              'Cargando política de privacidad...',
               style: TextStyle(
                 fontSize: 16,
+                fontWeight: FontWeight.w500,
                 color: isDark ? Colors.grey[400] : Colors.grey[600],
-                height: 1.4,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 32),
-            SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton.icon(
-                onPressed: _loadText,
-                icon: const Icon(Icons.refresh, size: 20),
-                label: const Text(
-                  'REINTENTAR',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 0,
-                ),
               ),
             ),
           ],
         ),
-      ),
-    );
+      );
+
+  Widget _buildErrorState(bool isDark) => Center(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.red.withValues(alpha: 0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.error_outline,
+                  size: 64,
+                  color: Colors.red.withValues(alpha: 0.8),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'Error al cargar',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: isDark ? Colors.white : Colors.black87,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 12),
+              Text(
+                'No se pudo cargar la política de privacidad. Verifica que el archivo existe en assets/text/privacy.txt',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: isDark ? Colors.grey[400] : Colors.grey[600],
+                  height: 1.4,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton.icon(
+                  onPressed: _loadText,
+                  icon: const Icon(Icons.refresh, size: 20),
+                  label: const Text(
+                    'REINTENTAR',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
 }

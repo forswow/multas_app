@@ -1,4 +1,4 @@
-import '../entities/task.dart';
+import 'package:multas_app/features/documents/domain/entities/task.dart';
 
 abstract class TaskRepository {
   Future<List<Task>> getTasks();

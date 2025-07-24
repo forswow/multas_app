@@ -12,7 +12,6 @@ class AdemasPageApp extends StatefulWidget {
 
 class AdemasPageAppState extends State<AdemasPageApp> {
   RateMyApp rateMyApp = RateMyApp(
-    preferencesPrefix: 'rateMyApp_',
     minDays: 3,
     minLaunches: 7,
     remindDays: 2,
@@ -114,8 +113,13 @@ class AdemasPageAppState extends State<AdemasPageApp> {
               leading: const Icon(Icons.share),
               title: const Text('Compartir'),
               onTap: () {
-                Share.share(
-                    'https://play.google.com/store/search?q=pub%3ADivTag&c=apps');
+                SharePlus.instance.share(
+                  ShareParams(
+                    uri: Uri.parse(
+                      'https://play.google.com/store/search?q=pub%3ADivTag&c=apps',
+                    ),
+                  ),
+                );
               },
             ),
             // ListTile(

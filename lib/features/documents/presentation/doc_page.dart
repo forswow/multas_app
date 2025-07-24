@@ -81,7 +81,7 @@ class _DocumentsPageState extends State<DocumentsPage> {
                   const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 20),
+              padding: const EdgeInsets.only( bottom: 20),
               child: OutlinedButton(
                 style:
                     OutlinedButton.styleFrom(minimumSize: const Size(200, 50)),
@@ -92,7 +92,7 @@ class _DocumentsPageState extends State<DocumentsPage> {
                   if (title.isEmpty || description.isEmpty) {
                     return;
                   }
-                  dbHelper.insertTask(title, description, isChecked);
+                  await dbHelper.insertTask(title, description, isChecked);
                   _titleController.clear();
                   setState(() {
                     _isChecked = false;
@@ -175,7 +175,7 @@ class _DocumentsPageState extends State<DocumentsPage> {
     );
   }
 
-  void _deleteTask(Task task) async {
+  Future<void> _deleteTask(Task task) async {
     await dbHelper.deleteTask(task.id!);
     setState(() {});
   }

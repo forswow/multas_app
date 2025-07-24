@@ -1,13 +1,14 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:multas_app/core/providers/database_provider.dart';
+import 'package:multas_app/features/documents/data/repositories/task_repository_impl.dart';
+import 'package:multas_app/features/documents/domain/entities/task.dart';
+import 'package:multas_app/features/documents/domain/repositories/task_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/providers/database_provider.dart';
-import '../data/repositories/task_repository_impl.dart';
-import '../domain/entities/task.dart';
-import '../domain/repositories/task_repository.dart';
 
 part 'task_providers.g.dart';
 
 @riverpod
-TaskRepository taskRepository(TaskRepositoryRef ref) {
+TaskRepository taskRepository(Ref ref) {
   final database = ref.watch(databaseProvider).requireValue;
   return TaskRepositoryImpl(database);
 }
@@ -40,7 +41,7 @@ class TasksNotifier extends _$TasksNotifier {
 }
 
 @riverpod
-List<Task> vehicleTasks(VehicleTasksRef ref) {
+List<Task> vehicleTasks(Ref ref) {
   final tasks = ref.watch(tasksNotifierProvider);
   return tasks.when(
     data: (taskList) =>

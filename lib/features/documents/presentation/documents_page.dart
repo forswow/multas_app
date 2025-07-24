@@ -70,7 +70,7 @@ class DocumentsView extends ConsumerWidget {
                           Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
-                              color: Colors.blue.withOpacity(0.1),
+                              color: Colors.blue.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Icon(
@@ -137,9 +137,11 @@ class DocumentsView extends ConsumerWidget {
                     tasksAsync.when(
                       data: (tasks) => Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 6),
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.1),
+                          color: Colors.blue.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
@@ -191,7 +193,7 @@ class DocumentsView extends ConsumerWidget {
                       Icon(
                         Icons.error_outline,
                         size: 64,
-                        color: Colors.red.withOpacity(0.6),
+                        color: Colors.red.withValues(alpha: 0.6),
                       ),
                       const SizedBox(height: 16),
                       Text(
@@ -227,66 +229,66 @@ class DocumentsView extends ConsumerWidget {
   }
 
   Widget _buildEmptyState(bool isDark) => Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.1),
-              shape: BoxShape.circle,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.grey.withValues(alpha: 0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.description_outlined,
+                size: 64,
+                color: Colors.grey.withValues(alpha: 0.6),
+              ),
             ),
-            child: Icon(
-              Icons.description_outlined,
-              size: 64,
-              color: Colors.grey.withOpacity(0.6),
+            const SizedBox(height: 24),
+            Text(
+              'No tienes documentos',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: isDark ? Colors.white : Colors.black87,
+              ),
             ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            'No tienes documentos',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              color: isDark ? Colors.white : Colors.black87,
+            const SizedBox(height: 8),
+            Text(
+              'Agrega tu primer documento usando\nel formulario de arriba',
+              style: TextStyle(
+                fontSize: 16,
+                color: isDark ? Colors.grey[400] : Colors.grey[600],
+              ),
+              textAlign: TextAlign.center,
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Agrega tu primer documento usando\nel formulario de arriba',
-            style: TextStyle(
-              fontSize: 16,
-              color: isDark ? Colors.grey[400] : Colors.grey[600],
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 24),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.blue.withOpacity(0.3)),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.arrow_upward,
-                  color: Colors.blue,
-                  size: 16,
-                ),
-                SizedBox(width: 8),
-                Text(
-                  'Comienza aquí',
-                  style: TextStyle(
+            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blue.withValues(alpha: 0.3)),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.arrow_upward,
                     color: Colors.blue,
-                    fontWeight: FontWeight.w500,
+                    size: 16,
                   ),
-                ),
-              ],
+                  SizedBox(width: 8),
+                  Text(
+                    'Comienza aquí',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
 }

@@ -55,7 +55,7 @@ class MorePage extends ConsumerWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Colors.purple.withOpacity(0.1),
+                        color: Colors.purple.withValues(alpha:0.1),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: const Icon(
@@ -186,7 +186,6 @@ class MorePage extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
                         color: isDark ? Colors.grey[700]! : Colors.grey[200]!,
-                        width: 1,
                       ),
                     ),
                     child: Column(
@@ -251,8 +250,8 @@ class MorePage extends ConsumerWidget {
           boxShadow: [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withOpacity(0.3)
-                  : Colors.grey.withOpacity(0.1),
+                  ? Colors.black.withValues(alpha:0.3)
+                  : Colors.grey.withValues(alpha:0.1),
               blurRadius: 10,
               offset: const Offset(0, 2),
             ),
@@ -270,7 +269,7 @@ class MorePage extends ConsumerWidget {
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.1),
+                      color: color.withValues(alpha:0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(
@@ -306,7 +305,7 @@ class MorePage extends ConsumerWidget {
                   Container(
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.1),
+                      color: color.withValues(alpha:0.1),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Icon(
@@ -323,10 +322,15 @@ class MorePage extends ConsumerWidget {
       );
 
   void _shareApp() {
-    Share.share(
-      '¡Descarga Multas App para gestionar los documentos de tus vehículos! '
-      'https://play.google.com/store/search?q=pub%3ADivTag&c=apps',
-      subject: 'Multas App - Gestión de documentos vehiculares',
+    SharePlus.instance.share(
+      ShareParams(
+        uri: Uri.parse(
+          'https://play.google.com/store/search?q=pub%3ADivTag&c=apps',
+        ),
+        title:
+            '¡Descarga Multas App para gestionar los documentos de tus vehículos! ',
+        subject: 'Multas App - Gestión de documentos vehiculares',
+      ),
     );
   }
 
@@ -343,7 +347,7 @@ class MorePage extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.amber.withOpacity(0.1),
+                color: Colors.amber.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(
@@ -388,12 +392,13 @@ class MorePage extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
-                  5,
-                  (index) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                        size: 32,
-                      )),
+                5,
+                (index) => const Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                  size: 32,
+                ),
+              ),
             ),
           ],
         ),
@@ -446,8 +451,7 @@ class MorePage extends ConsumerWidget {
     );
   }
 
-  void _showSupportDialog(BuildContext context, bool isDark) {
-    showDialog(
+  void _showSupportDialog(BuildContext context, bool isDark) => showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
         backgroundColor: isDark ? const Color(0xFF2A2A2A) : Colors.white,
@@ -459,7 +463,7 @@ class MorePage extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.purple.withOpacity(0.1),
+                color: Colors.purple.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(
@@ -527,7 +531,6 @@ class MorePage extends ConsumerWidget {
         ],
       ),
     );
-  }
 
   Widget _buildSupportItem({
     required IconData icon,
@@ -538,7 +541,7 @@ class MorePage extends ConsumerWidget {
       Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isDark ? Colors.grey[800]!.withOpacity(0.5) : Colors.grey[50],
+          color: isDark ? Colors.grey[800]!.withValues(alpha:0.5) : Colors.grey[50],
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: isDark ? Colors.grey[700]! : Colors.grey[200]!,

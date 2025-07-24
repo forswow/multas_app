@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:multas_app/features/documents/domain/entities/task.dart';
-import 'package:multas_app/features/documents/presentation/doc_page.dart';
 import 'package:multas_app/core/services/database_helper.dart';
 import 'package:multas_app/core/widgets/doc_home_widget.dart';
+import 'package:multas_app/features/documents/domain/entities/task.dart';
+import 'package:multas_app/features/documents/presentation/doc_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -25,10 +25,10 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const DocumentsPage()),
+                      builder: (context) => const DocumentsPage(),),
                 );
               },
-            )
+            ),
           ],
         ),
         body: Center(
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ]);
+      ],);
 
   Widget _buildTopImage() => Center(
         child: Column(
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
           } else {
             final List<Task> tasks = snapshot.data!;
             final List<Task> filteredTasks = tasks
-                .where((task) => task.description == 'Patente'
+                .where((task) => task.description == 'Patente',
                     // || task.description == 'DNI',
                     )
                 .toList();

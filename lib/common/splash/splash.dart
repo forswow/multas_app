@@ -13,24 +13,24 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Future.delayed(
-        const Duration(seconds: 1), () => context.pushReplacement('/'));
+      const Duration(seconds: 1),
+      () => context.pushReplacement('/'),
+    );
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              height: 100,
-            ),
-          ],
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/logo.png',
+                height: 100,
+              ),
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

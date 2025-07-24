@@ -9,7 +9,7 @@ class DocHomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => InkWell(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 0),
+          padding: const EdgeInsets.symmetric(horizontal: 5.0, ),
           child: ListTile(
             title: Text(
               task.title,

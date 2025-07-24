@@ -55,7 +55,7 @@ class SettingsPage extends ConsumerWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Colors.blue.withOpacity(0.1),
+                        color: Colors.blue.withValues(alpha:0.1),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: const Icon(
@@ -121,8 +121,8 @@ class SettingsPage extends ConsumerWidget {
                       boxShadow: [
                         BoxShadow(
                           color: isDark
-                              ? Colors.black.withOpacity(0.3)
-                              : Colors.grey.withOpacity(0.1),
+                              ? Colors.black.withValues(alpha:0.3)
+                              : Colors.grey.withValues(alpha:0.1),
                           blurRadius: 10,
                           offset: const Offset(0, 2),
                         ),
@@ -140,8 +140,8 @@ class SettingsPage extends ConsumerWidget {
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: isDarkMode
-                                  ? Colors.orange.withOpacity(0.1)
-                                  : Colors.blue.withOpacity(0.1),
+                                  ? Colors.orange.withValues(alpha:0.1)
+                                  : Colors.blue.withValues(alpha:0.1),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Icon(
@@ -194,7 +194,7 @@ class SettingsPage extends ConsumerWidget {
                             Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.1),
+                                color: Colors.grey.withValues(alpha:0.1),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Icon(
@@ -233,7 +233,7 @@ class SettingsPage extends ConsumerWidget {
                             Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: Colors.red.withOpacity(0.1),
+                                color: Colors.red.withValues(alpha:0.1),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: const Icon(
@@ -332,8 +332,8 @@ class SettingsPage extends ConsumerWidget {
           boxShadow: [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withOpacity(0.3)
-                  : Colors.grey.withOpacity(0.1),
+                  ? Colors.black.withValues(alpha:0.3)
+                  : Colors.grey.withValues(alpha:0.1),
               blurRadius: 10,
               offset: const Offset(0, 2),
             ),
@@ -351,7 +351,7 @@ class SettingsPage extends ConsumerWidget {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.1),
+                      color: color.withValues(alpha:0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Icon(
@@ -409,7 +409,7 @@ class SettingsPage extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.blue.withOpacity(0.1),
+                color: Colors.blue.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(
@@ -488,7 +488,7 @@ class SettingsPage extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.1),
+                color: Colors.green.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(

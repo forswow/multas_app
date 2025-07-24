@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:multas_app/features/documents/domain/entities/task.dart';
@@ -27,10 +29,12 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
     _scaleAnimation = Tween<double>(
       begin: 1.0,
       end: 0.95,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    ));
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
   }
 
   @override
@@ -81,14 +85,14 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: widget.task.isChecked
-                ? Colors.green.withOpacity(0.3)
+                ? Colors.green.withValues(alpha: 0.3)
                 : (isDark ? Colors.grey[700]! : Colors.grey[200]!),
           ),
           boxShadow: [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withOpacity(0.3)
-                  : Colors.grey.withOpacity(0.1),
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.grey.withValues(alpha: 0.1),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -107,7 +111,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: documentColor.withOpacity(0.1),
+                      color: documentColor.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(
@@ -144,7 +148,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
                                   vertical: 4,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.green.withOpacity(0.1),
+                                  color: Colors.green.withValues(alpha: 0.1),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: const Row(
@@ -178,7 +182,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
                                 vertical: 2,
                               ),
                               decoration: BoxDecoration(
-                                color: documentColor.withOpacity(0.1),
+                                color: documentColor.withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
@@ -198,7 +202,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
                                   vertical: 4,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.orange.withOpacity(0.1),
+                                  color: Colors.orange.withValues(alpha: 0.1),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: const Row(
@@ -276,7 +280,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
                   IconButton(
                     icon: Icon(
                       Icons.delete_outline,
-                      color: Colors.red.withOpacity(0.7),
+                      color: Colors.red.withValues(alpha: 0.7),
                       size: 20,
                     ),
                     onPressed: () => _showDeleteDialog(context, ref),
@@ -286,7 +290,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
                       minHeight: 36,
                     ),
                     style: IconButton.styleFrom(
-                      backgroundColor: Colors.red.withOpacity(0.1),
+                      backgroundColor: Colors.red.withValues(alpha: 0.1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -308,9 +312,11 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
       _isUpdating = true;
     });
 
-    _animationController.forward().then((_) {
-      _animationController.reverse();
-    });
+    unawaited(
+      _animationController.forward().then((_) {
+        _animationController.reverse();
+      }),
+    );
 
     try {
       final updatedTask =
@@ -392,7 +398,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.1),
+                color: Colors.red.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(
@@ -427,7 +433,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: isDark
-                    ? Colors.grey[800]!.withOpacity(0.5)
+                    ? Colors.grey[800]!.withValues(alpha: 0.5)
                     : Colors.grey[100],
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
@@ -470,7 +476,7 @@ class _TaskListItemState extends ConsumerState<TaskListItem>
               'Esta acción no se puede deshacer.',
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.red.withOpacity(0.8),
+                color: Colors.red.withValues(alpha: 0.8),
                 fontStyle: FontStyle.italic,
               ),
             ),

@@ -1,12 +1,10 @@
+import 'package:multas_app/features/documents/domain/entities/task.dart';
+import 'package:multas_app/features/documents/domain/repositories/task_repository.dart';
 import 'package:sqflite/sqflite.dart';
-import '../../../../core/providers/database_provider.dart';
-import '../../domain/entities/task.dart';
-import '../../domain/repositories/task_repository.dart';
 
 class TaskRepositoryImpl implements TaskRepository {
+  const TaskRepositoryImpl(this.database);
   final Database database;
-
-  TaskRepositoryImpl(this.database);
 
   @override
   Future<List<Task>> getTasks() async {

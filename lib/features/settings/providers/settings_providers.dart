@@ -1,5 +1,5 @@
+import 'package:multas_app/core/providers/preferences_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/providers/preferences_provider.dart';
 
 part 'settings_providers.g.dart';
 
