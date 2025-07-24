@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multas_app/features/documents/domain/entities/task.dart';
-import 'package:multas_app/pages/links_page.dart';
+import 'package:multas_app/features/home/presentation/links_page.dart';
 
 class DocHomeWidget extends StatelessWidget {
   const DocHomeWidget({required this.task, super.key});

@@ -10,8 +10,10 @@ import 'package:multas_app/features/documents/presentation/doc_page.dart';
 import 'package:multas_app/features/documents/presentation/documents_page.dart';
 import 'package:multas_app/features/home/presentation/home_page.dart';
 import 'package:multas_app/features/home/presentation/home_view.dart';
+import 'package:multas_app/features/home/presentation/links_page.dart';
 import 'package:multas_app/features/mas/presentation/mas_page.dart';
 import 'package:multas_app/features/mas/presentation/more_view.dart';
+import 'package:multas_app/features/settings/presentation/privacy/privacy_view.dart';
 import 'package:multas_app/features/settings/presentation/settings_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -77,10 +79,14 @@ GoRouter router(Ref ref) {
         path: '/settings',
         builder: (context, state) => const SettingsPage(),
       ),
-      // GoRoute(
-      //   path: '/consulta',
-      //   builder: (context, state) => const ConsultationPage(),
-      // ),
+      GoRoute(
+        path: '/privacy',
+        builder: (context, state) => const PrivacyView(),
+      ),
+      GoRoute(
+        path: '/consulta',
+        builder: (context, state) => const SpacedItemsList(),
+      ),
     ],
   );
 

@@ -32,7 +32,7 @@ class MorePage extends ConsumerWidget {
         slivers: [
           // Header section
           SliverToBoxAdapter(
-            child: Container(
+            child: DecoratedBox(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
