@@ -5,7 +5,7 @@ class TextFromFileScreen extends StatefulWidget {
   const TextFromFileScreen({super.key});
 
   @override
-  _TextFromFileScreenState createState() => _TextFromFileScreenState();
+  State<TextFromFileScreen> createState() => _TextFromFileScreenState();
 }
 
 class _TextFromFileScreenState extends State<TextFromFileScreen> {
@@ -32,13 +32,13 @@ class _TextFromFileScreenState extends State<TextFromFileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Privacy Policy'),
+        title: const Text('Privacy Policy'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Text(
           _fileContents,
-          style: TextStyle(fontSize: 14.0),
+          style: const TextStyle(fontSize: 14.0),
         ),
       ),
     );

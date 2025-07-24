@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:multas_app/pages/doc_page.dart';
+import 'package:multas_app/features/doc/presentation/doc_page.dart';
 import 'package:multas_app/core/services/database_helper.dart';
 import 'package:multas_app/common/models/doc_model.dart';
 import 'package:multas_app/core/widgets/doc_home_widget.dart';

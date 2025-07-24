@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 class BottomNavigationView extends StatelessWidget {
   const BottomNavigationView({super.key, required this.navigationShell});
   final StatefulNavigationShell navigationShell;
@@ -12,24 +11,26 @@ class BottomNavigationView extends StatelessWidget {
         child: navigationShell,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.receipt_long),
-            label: 'Multas',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.folder),
-            label: 'Documentos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.grid_view),
-            label: 'Más',
-          ),
-        ],
+        items: NavigationEnum.values
+            .map((el) => BottomNavigationBarItem(
+                  icon: Icon(el.icon),
+                  label: el.label,
+                ))
+            .toList(),
         currentIndex: navigationShell.currentIndex,
         selectedItemColor: Colors.blue[800],
         onTap: navigationShell.goBranch,
       ),
     );
   }
+}
+
+enum NavigationEnum {
+  multas(Icons.receipt_long, 'Multas'),
+  documents(Icons.folder, 'Documentos'),
+  mas(Icons.grid_view, 'Más');
+
+  const NavigationEnum(this.icon, this.label);
+  final IconData icon;
+  final String label;
 }

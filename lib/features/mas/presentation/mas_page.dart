@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:multas_app/pages/settings/configuration_page.dart';
+import 'package:multas_app/features/settings/configuration_page.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:multas_app/pages/policy_page.dart';
