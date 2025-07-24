@@ -58,12 +58,13 @@ class _DocumentsPageState extends State<DocumentsPage> {
                   });
                 },
                 items: <String>['DNI', 'Patente', 'Licencia de conducir']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+                    .map<DropdownMenuItem<String>>(
+                      (String value) => DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      ),
+                    )
+                    .toList(),
               ),
             ),
             CheckboxListTile(
@@ -100,7 +101,9 @@ class _DocumentsPageState extends State<DocumentsPage> {
                 child: Text(
                   "Agregar".toUpperCase(),
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
@@ -112,7 +115,8 @@ class _DocumentsPageState extends State<DocumentsPage> {
                     return const Center(child: CircularProgressIndicator());
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                     return const Center(
-                        child: Text('No tienes ningún documentos'));
+                      child: Text('No tienes ningún documentos'),
+                    );
                   } else if (snapshot.hasError) {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else {
