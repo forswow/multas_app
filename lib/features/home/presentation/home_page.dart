@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:multas_app/features/doc/presentation/doc_page.dart';
+import 'package:multas_app/features/documents/domain/entities/task.dart';
+import 'package:multas_app/features/documents/presentation/doc_page.dart';
 import 'package:multas_app/core/services/database_helper.dart';
-import 'package:multas_app/common/models/doc_model.dart';
 import 'package:multas_app/core/widgets/doc_home_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,27 +15,26 @@ class _HomePageState extends State<HomePage> {
   final dbHelper = DatabaseHelper();
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Multas'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const DocumentsPage()),
-              );
-            },
-          )
-        ],
-      ),
-      body: Center(
-        child: _buildMainColumn(),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: const Text('Multas'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DocumentsPage()),
+                );
+              },
+            )
+          ],
+        ),
+        body: Center(
+          child: _buildMainColumn(),
+        ),
+      );
 
   Widget _buildMainColumn() => ListView(shrinkWrap: true, children: [
         _buildTopImage(),

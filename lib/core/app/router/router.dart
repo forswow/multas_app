@@ -6,9 +6,13 @@ import 'package:go_router/go_router.dart';
 import 'package:multas_app/common/splash/splash.dart';
 import 'package:multas_app/core/utils/fade_transition/fade_transition.dart';
 import 'package:multas_app/core/widgets/navigation_bar.dart';
-import 'package:multas_app/features/doc/presentation/doc_page.dart';
+import 'package:multas_app/features/documents/presentation/doc_page.dart';
+import 'package:multas_app/features/documents/presentation/documents_page.dart';
 import 'package:multas_app/features/home/presentation/home_page.dart';
+import 'package:multas_app/features/home/presentation/home_view.dart';
 import 'package:multas_app/features/mas/presentation/mas_page.dart';
+import 'package:multas_app/features/mas/presentation/more_view.dart';
+import 'package:multas_app/features/settings/presentation/settings_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
@@ -25,50 +29,61 @@ GoRouter router(Ref ref) {
     navigatorKey: navigatorKey,
     initialLocation: '/splash',
     debugLogDiagnostics: true,
-    observers: [MyNavigatorObserver()],
     routes: [
-      GoRoute(path: '/splash', builder: (context, state) => const Splash()),
+      GoRoute(
+        path: '/splash',
+        builder: (context, state) => const Splash(),
+      ),
       StatefulShellRoute.indexedStack(
-          builder: (context, state, navigationShell) =>
-              BottomNavigationView(navigationShell: navigationShell),
-          branches: [
-            StatefulShellBranch(
-              navigatorKey: shellNavigatorKey,
-              routes: [
-                GoRoute(
-                  path: '/',
-                  pageBuilder: (context, state) => FadeTransitionPage(
-                    key: state.pageKey,
-                    child: const HomePage(),
-                  ),
+        builder: (context, state, navigationShell) =>
+            BottomNavigationShell(navigationShell: navigationShell),
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/',
+                pageBuilder: (context, state) => FadeTransitionPage(
+                  key: state.pageKey,
+                  child: const HomeView(),
                 ),
-              ],
-            ),
-            StatefulShellBranch(
-              routes: [
-                GoRoute(
-                  path: '/documents',
-                  pageBuilder: (context, state) => FadeTransitionPage(
-                    key: state.pageKey,
-                    child: const DocumentsPage(),
-                  ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/documents',
+                pageBuilder: (context, state) => FadeTransitionPage(
+                  key: state.pageKey,
+                  child: const DocumentsView(),
                 ),
-              ],
-            ),
-            StatefulShellBranch(
-              routes: [
-                GoRoute(
-                    path: '/mas',
-                    pageBuilder: (context, state) => FadeTransitionPage(
-                          key: state.pageKey,
-                          child: const AdemasPageApp(),
-                        ),
-                    routes: []),
-              ],
-            ),
-          ])
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/more',
+                pageBuilder: (context, state) => FadeTransitionPage(
+                  key: state.pageKey,
+                  child: const MorePage(),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (context, state) => const SettingsPage(),
+      ),
+      // GoRoute(
+      //   path: '/consulta',
+      //   builder: (context, state) => const ConsultationPage(),
+      // ),
     ],
   );
+
   ref.onDispose(() {
     log('🚀 router disposed');
     router.dispose();

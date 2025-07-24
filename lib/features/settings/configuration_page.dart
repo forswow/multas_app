@@ -16,12 +16,11 @@ class FirstScreenState extends State<FirstScreen> {
   void initState() {
     super.initState();
     _themeData.writeIfNull("darkmode", false);
-    _isdarkMode = _themeData.read("darkmode");
+    // _isdarkMode = _themeData.read("darkmode");
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Configuración'),
       ),
@@ -55,5 +54,4 @@ class FirstScreenState extends State<FirstScreen> {
         ),
       ),
     );
-  }
 }

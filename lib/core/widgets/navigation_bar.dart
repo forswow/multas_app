@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BottomNavigationView extends StatelessWidget {
-  const BottomNavigationView({super.key, required this.navigationShell});
+class BottomNavigationShell extends StatelessWidget {
+  const BottomNavigationShell({required this.navigationShell, super.key});
   final StatefulNavigationShell navigationShell;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: navigationShell,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: NavigationEnum.values
-            .map((el) => BottomNavigationBarItem(
+  Widget build(BuildContext context) => Scaffold(
+        body: Center(
+          child: navigationShell,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: NavigationEnum.values
+              .map(
+                (el) => BottomNavigationBarItem(
                   icon: Icon(el.icon),
                   label: el.label,
-                ))
-            .toList(),
-        currentIndex: navigationShell.currentIndex,
-        selectedItemColor: Colors.blue[800],
-        onTap: navigationShell.goBranch,
-      ),
-    );
-  }
+                ),
+              )
+              .toList(),
+          currentIndex: navigationShell.currentIndex,
+          selectedItemColor: Colors.blue[800],
+          onTap: navigationShell.goBranch,
+        ),
+      );
 }
 
 enum NavigationEnum {

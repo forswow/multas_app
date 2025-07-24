@@ -1,19 +1,15 @@
+import 'package:multas_app/features/documents/domain/entities/task.dart';
 import 'package:path/path.dart';
-import 'package:multas_app/common/models/doc_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
-  Future<Database> get database async {
-    return openDatabase(
-      join(await getDatabasesPath(), 'task_db.db'),
-      onCreate: (db, version) {
-        return db.execute(
+  Future<Database> get database async => openDatabase(
+        join(await getDatabasesPath(), 'task_db.db'),
+        onCreate: (db, version) => db.execute(
           "CREATE TABLE tasks(id INTEGER PRIMARY KEY, title TEXT, description TEXT, isChecked INTEGER)",
-        );
-      },
-      version: 1,
-    );
-  }
+        ),
+        version: 1,
+      );
 
   Future<void> insertTask(
       String title, String description, bool isChecked) async {
@@ -32,9 +28,7 @@ class DatabaseHelper {
   Future<List<Task>> getTasks() async {
     final Database db = await database;
     final List<Map<String, dynamic>> maps = await db.query('tasks');
-    return List.generate(maps.length, (i) {
-      return Task.fromMap(maps[i]);
-    });
+    return List.generate(maps.length, (i) => Task.fromMap(maps[i]));
   }
 
   Future<void> deleteTask(int id) async {

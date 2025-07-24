@@ -5,6 +5,5 @@ import 'package:multas_app/core/utils/pref/pref.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await UserPref.init();
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: MultasApp()));
 }
